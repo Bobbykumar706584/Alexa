@@ -26,8 +26,7 @@ def take_command():
                 print(command)
     except:
         pass
-    return command
-
+    return command;
 
 def run_alexa():
     command = take_command()
@@ -40,21 +39,33 @@ def run_alexa():
         time = datetime.datetime.now().strftime('%h:%m')
         talk('Current time is ' + time)
     elif 'who is' in command:
-        person = command.replace('what is ', '')
+        person = command.replace('who is ', '')
         info = wikipedia.summary(person,1)
         print(info)
         talk(info)
+    elif 'i love you' in command:
+        talk('I love you too')
+    elif 'Hi alexa' or 'Hello alexa' in command:
+        talk('Hi')
+    elif 'How are you' in command:
+        talk('me, I am good')
+    elif 'thank you' in command:
+        talk('welcome')
     elif 'can you' in command:
-        talk('Yes, I can')    
-    elif 'date' in command:
-        talk('sorry, I do not have time')
+        talk('Yes, I can')
+    elif 'name' in command:
+        talk('my name is Alexa')
+    elif 'date' in command:    
+        talk('sorry, I am very busy this time.')
+    elif 'favourite' or 'like' in command:
+        talk('Your favourite is mom and dad')
     elif 'are you single' in command:
-        talk('No, I am in relastionship with Ajay')
+        talk('No, I am in relastionship with you')
     elif 'joke' in command:
         print(pyjokes.get_joke())
         talk(pyjokes.get_joke())
     else:
-        talk("I can't hear you")
+        talk("I can't hear you, say it again")
 
 while True:
     run_alexa()
